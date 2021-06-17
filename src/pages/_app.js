@@ -1,4 +1,7 @@
 import { useEffect } from 'react'
+import CssBaseline from '@material-ui/core/CssBaseline'
+
+import AppBar from '../components/AppBar/AppBar'
 
 function MyApp({ Component, pageProps }) {
 	useEffect(() => {
@@ -9,7 +12,13 @@ function MyApp({ Component, pageProps }) {
 		}
 	}, [])
 
-	return <Component {...pageProps} />
+	return (
+		<>
+			<CssBaseline />
+			<AppBar />
+			<Component {...pageProps} />{' '}
+		</>
+	)
 }
 
 export default MyApp
