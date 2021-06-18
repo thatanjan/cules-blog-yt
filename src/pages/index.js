@@ -1,5 +1,9 @@
-import Typography from '@material-ui/core/Typography'
+import BlogPreviewLayout from '../components/Layouts/BlogPreviewLayout'
 
 export default function Home() {
-	return <Typography variant='h1'>hello world</Typography>
+	return (
+		<>
+			<BlogPreviewLayout />
+		</>
+	)
 }
