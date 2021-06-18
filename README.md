@@ -1,34 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Cules Blog For Youtube
 
-## Getting Started
+Cules Blog is the project repository that has been created for the video series [Build a blog using JAMstack](https://www.youtube.com/watch?v=KYLBb1W1ZBA&list=PLEr-WXao6eSPQzQAlkYpNLfcSm6pTiTpd)
 
-First, run the development server:
+## Installation
+
+Install this repository on your system
 
 ```bash
-npm run dev
-# or
-yarn dev
+    git clone https://github.com/thatanjan/cules-blog-yt.git
+
+    cd cules-blog-yt
+    yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To check for specific lesson code:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+    git checkout <branch-name>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+To setup from scratch:
 
-## Learn More
+```bash
+    yarn create next-app <app-name>
 
-To learn more about Next.js, take a look at the following resources:
+    cd <app-name>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    yarn add @material-ui/core axios dotenv gray-matter mongoose nanoid next-mdx-remote prism-react-renderer react react-dom reading-time swr
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Authors
 
-## Deploy on Vercel
+- [@thatanjan](https://thatanjan.me)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Related
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Here are some related projects
+
+[Cules Coding](https://github.com/thatanjan/cules-coding)
+
+[Confession](https://github.com/thatanjan/confession)
+
+## Feedback
+
+If you have any feedback, please reach out to me at thatanjan@gmail.com or any social media as @thatanjan
+
+## Support
+
+For support, Please Share [Confession](https://con-fession.vercel.app/)
+
+# Subscribe to [Cules Coding](https://www.youtube.com/channel/UCBaGowNYTUsm3IDaHbLRMYw/)
