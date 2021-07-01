@@ -8,10 +8,10 @@ import BlogModel from '../mongoose/BlogModel'
 
 import BlogPreviewLayout from '../components/Layouts/BlogPreviewLayout'
 
-export default function Home() {
+export default function Home({ allBlogs }) {
 	return (
 		<>
-			<BlogPreviewLayout />
+			<BlogPreviewLayout allBlogs={allBlogs} />
 		</>
 	)
 }
@@ -61,7 +61,22 @@ export const getStaticProps = async () => {
 
 	await Promise.all(updateBlogPromise)
 
+	const allBlogsResult = await BlogModel.find(
+		{},
+		'-content -customID -_id'
+	).sort('-createdAt')
+
+	const allBlogs = allBlogsResult
+		.map((blog) => blog.toObject())
+		.map((blog) => {
+			const { createdAt } = blog
+
+			blog.createdAt = createdAt.toDateString()
+
+			return blog
+		})
+
 	return {
-		props: {},
+		props: { allBlogs },
 	}
 }
