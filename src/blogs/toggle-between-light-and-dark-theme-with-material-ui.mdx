@@ -1,0 +1,235 @@
+---
+title: Easily toggle between light and dark theme with Material-UI
+description: In this blog you are going to learn how to create a toggle button that switches between light and dark theme.
+banner: /blogs/react/toggle-between-light-and-dark-theme-with-material-ui/banner.png
+altText: In this blog you are going to learn how to create a toggle button that switches between light and dark theme.
+customID: 60b5a9a6925970bfb31f660f
+---
+
+I have already created a video about it on my youtube channel. Check that out. 
+<Iframe src="https://www.youtube.com/embed/ag3je1g0BN8" title="YouTube video player" /> 
+
+We know that in dark mode, the background stays dark and the foreground is white to keep the contrast. In light mode, it is just opposite. 
+So, we need a component which automatically changes its background color based on the theme. Also for the text.
+
+In Material-ui, we have a component like that. That is the Paper component.  Paper component is intelligent enough to automatically detect the theme and it will change its background color. For more information, please check their docs out. [Paper](https://material-ui.com/components/paper/#paper)
+
+- Let's create a boilerplate component.
+
+```javascript
+import React from 'react'
+
+const DarkTheme = (props) => {
+	return (
+		<div>
+			
+		</div>
+	)
+}
+
+export default DarkTheme
+```
+
+- Create a new state with useState hook.
+```javascript
+import React, {useState} from 'react'
+
+const DarkTheme = (props) => {
+	const [dark, setDark] = useState(false)
+	return (
+		<div>
+			
+		</div>
+	)
+}
+
+export default DarkTheme
+```
+
+This will be used for checking if the current mode is in dark or not.
+
+- Create a new theme.
+
+```javascript
+import React, {useState} from 'react'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+
+const DarkTheme = (props) => {
+	const [dark, setDark] = useState(false)
+
+	const theme = createMuiTheme({
+		palette: {
+			type: dark ? 'dark' : 'light',
+		},
+	})
+
+	return (
+		<div>
+			
+		</div>
+	)
+}
+
+export default DarkTheme
+
+```
+
+Simply we specify the theme mode by the type property. In this case it will be updated based on the `dark` state value. We will use a button to manipulate the state.
+
+- Insert a paper with Typography component.
+
+```javascript
+import React, { useState } from 'react'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import Paper from '@material-ui/core/Paper'
+
+const DarkTheme = () => {
+	const [dark, setDark] = useState(false)
+
+	const theme = createMuiTheme({
+		palette: {
+			type: dark ? 'dark' : 'light',
+		},
+	})
+
+	return (
+			<Paper>
+				<Typography variant='h1'>This is a h1 text</Typography>
+
+				<Typography variant='body2'>This is a body2 text</Typography>
+			</Paper>
+	)
+}
+
+export default DarkTheme
+```
+
+- Wrap all component by the ThemeProvider and pass the theme object as theme prop. 
+
+```javascript
+import React, { useState } from 'react'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import Paper from '@material-ui/core/Paper'
+
+const DarkTheme = () => {
+	const [dark, setDark] = useState(false)
+
+	const theme = createMuiTheme({
+		palette: {
+			type: dark ? 'dark' : 'light',
+		},
+	})
+
+	return (
+		<ThemeProvider theme={theme}>
+			<Paper>
+				<Typography variant='h1'>This is a h1 text</Typography>
+
+				<Typography variant='body2'>This is a body2 text</Typography>
+			</Paper>
+		</ThemeProvider>
+	)
+}
+
+export default DarkTheme
+```
+
+If you have no idea about theming in material-ui, then please check this video out.
+<iframe src="https://www.youtube.com/embed/oMedA_vOJac" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+ThemeProvider basically making our custom theme available to all the children. It is like redux and context api.
+
+But we still don't have the toggle functionality. We need a switch component
+
+- Insert a switch component or any other button type component that can be togglable.
+
+```javascript
+import React, { useState } from 'react'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import Paper from '@material-ui/core/Paper'
+import Switch from '@material-ui/core/Switch'
+
+const DarkTheme = () => {
+	const [dark, setDark] = useState(false)
+
+	const theme = createMuiTheme({
+		palette: {
+			type: dark ? 'dark' : 'light',
+		},
+	})
+
+	return (
+		<ThemeProvider theme={theme}>
+			<Switch checked={dark} onChange={() => setDark(!dark)} />
+			<Paper>
+				<Typography variant='h1'>This is a h1 text</Typography>
+
+				<Typography variant='body2'>This is a body2 text</Typography>
+			</Paper>
+		</ThemeProvider>
+	)
+}
+
+export default DarkTheme
+```
+
+Everytime you click on the switch button, the dark state will be changed to its opposite value. This will toggle the theme type.
+
+- Switch off.
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/k66jyhem486cl64h6jj8.png)
+
+- Switch on.
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0eqrj5pmik8f3zqeis7p.png)
+
+#### How is it working?
+Paper component has white Background color and dark font color. And Typography component by default inherit the font color from its parent. In this case it is the Paper component. 
+When the theme type is changed, Paper is intelligent enough to detect the change. It will invert the color to keep contrast between foreground and background color.
+
+So, This is how it works. Isn't it so easy? 
+Subscribe to my channel. Until then, stay safe and good bye.
+
+### About me:
+
+#### Who am I?
+
+My name is Anjan. I am a full stack web developer from Dhaka, Bangladesh.
+
+#### What problems do I solve?
+
+I can create complex full stack web applications like social media application, blogging, e-commerce website and many more.
+
+#### Why do I do what I do?
+
+I love to solve problems and develop new ideas. I also enjoy sharing my knowledge to other people who are wiling to learn. That's why I write blog posts and run a youtube channel called [Cules Coding](https://www.youtube.com/channel/UCBaGowNYTUsm3IDaHbLRMYw?sub_confirmation=1)
+
+#### Think we should work together?
+
+##### Feel free to contact me
+
+Email: anjancules@gmail.com
+
+linkedin: [@thatanjan](https://linkedin.com/in/thatanjan/)
+
+portofolio: [anjan](https://anjan.vercel.app/)
+
+Github: [@thatanjan](https://github.com/thatAnjan/)
+
+Instagram (personal): [@thatanjan](https://instagram.com/thatAnjan/)
+
+Instagram (youtube channel): [@thatanjan](https://instagram.com/cules_coding/)
+
+twitter: [@thatanjan](https://twitter.com/thatAnjan)
+
+#### About My channel:
+
+#### Why would you subscribe to [Cules Coding](https://www.youtube.com/channel/UCBaGowNYTUsm3IDaHbLRMYw?sub_confirmation=1)?
+
+[ Cules Coding ](https://www.youtube.com/channel/UCBaGowNYTUsm3IDaHbLRMYw?sub_confirmation=1) will teach you full stack development. I will teach you not only the basic concepts but also the advanced concepts that other youtube channels don't cover. I will also teach you Data Structures and Algorithms with abstraction and without Math. You will also find many tutorials about developer tools and technologies. I also explain advanced concepts and technologies with simplicity.
+
+#### So what are you waiting for?
+
+Subscribe to [Cules Coding](https://www.youtube.com/channel/UCBaGowNYTUsm3IDaHbLRMYw?sub_confirmation=1) so that my friend you don't miss any of these cool stuffs.
+

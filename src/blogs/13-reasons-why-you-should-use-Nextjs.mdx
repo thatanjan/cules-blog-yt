@@ -1,0 +1,129 @@
+---
+title: 13 reasons why you should use Nextjs
+description: In this blog post I will explain 13 reasons why you should use Next.js.
+banner: /blogs/react/13-reasons-why-you-should-use-Nextjs/banner.png
+altText: 13 reasons why you should use Nextjs
+customID: 60b5a97278b540e0ad060e65
+---
+
+Now why should we use it? Simply because it solves our problems. So let's see the problems that Nextjs solves for us.
+
+1. SEO: One of the most drawbacks of client side rendering is poor SEO. Because in CSR you don't have any content on your html page. All content is rendered by the javascript. That's why search engines doesn't give you give search engine optimization. So, we need server side rendering. And Nextjs allow us to do that.
+
+2. Server Side Rendering: Client side rendering has bunch of problems like SEO, huge bundle size, slow initial load and obviously the blank page flickering. Server side rendering doesn't have that problem. And we can use server side rendering with nextjs.
+
+3. Static Site Generation: Suppose you have a blogging website. In this type of website the content hardly changes after it gets deployed. So you don't need to fetch any data from client or sever side. Everything is present on the html and css. So the browser only need to parse them and may be little bit javascript. This type of website we called static sites. They are super fast because the have less task to complete. With Nextjs, we can generate out static html on build time and we don't have to worry about anymore.
+
+4. Client Side Rendering: Yes, you can also do Client side rendering in nextjs. If you want to have single page application that doesn't refresh, well you can have it here. Basically you combine the 3(CSR, SSR, SSG) rendering system in Nextjs. You provide your static html or fetch data from `getStaticProps` which will be treated as static html. So you can have SEO. Then you fetch the necessary server side data from `getServerSide` function. And lastly you can use any client side data fetching method. And that' how you can have combination of 3rendering system.
+
+5. Image Optimization: Image is very important for our website. It can make user experience so much better and also it can make our website super slow. So we need to optimize our images. And Nextjs here is to help us. With Nextjs `Image` component, we don't have to worry about optimization. It will do all the work for use. It can make our: 
+   - Image size smaller while keeping the quality good.
+   - Lazy load our images.
+   - Responsive images based on the screen width.
+
+6. Built-in Routing: It has a built in routing system. You don't need to install any external package. It gives you all of the feature out of the box.
+
+7. Built-in CSS Support: With Nextjs you can:
+   - directly import your css files.
+   - import styles from `node_modules` directory.
+   - use component-level CSS with CSS Modules.
+   - Use any existing CSS-IN-JS solution.
+   - Nextjs support Styled-jsx out of the box.
+
+code with styled-jsx:
+
+```javascript
+function HelloWorld() {
+	return (
+		<div>
+			Hello world
+			<p>scoped!</p>
+			<style jsx>{`
+				p {
+					color: blue;
+				}
+				div {
+					background: red;
+				}
+				@media (max-width: 600px) {
+					div {
+						background: blue;
+					}
+				}
+			`}</style>
+			<style global jsx>{`
+				body {
+					background: black;
+				}
+			`}</style>
+		</div>
+	)
+}
+
+export default HelloWorld
+```
+
+8. Api Routes: So you need a back-end server for your website. But the work is not too much. Setting up a server for small amount of work is too much work.  Again Nextjs comes to rescue. It has a feature called api routes. It will allow you to build your own api. You can not only implement REST but also Graphql.
+
+9. Internationalized Routing: Nextjs has built in support for internationalized (i18n) routing. Let me explain. Suppose you have a website in English and some another language. If someone visit your website from Bangladesh, then you want your website language to be in Bengali. If someone visit from Korea, then you want it to be Korean. I hope you are getting my point.
+
+10. Code Splitting: Nextjs has Code splitting feature out of the box. If you don't know what it is then check out this blog ---> [What is code splitting?](https://dev.to/thatanjan/why-i-code-splitting-4i6m) by me. It is Simply splitting the code into separate bundle in order to make load faster.
+
+11. Static Assets: It has directory called `Public` where you can store all of your static files like svg, image, video etc.
+
+12. File System Routing: It has a file system routing. There is a pages directory where you put all of your page files. Like you are storing HTML files. That makes things easy to handle.
+
+13. Highly Configurable: If you have used create-react-app, then you that you can't change the config. You have to either eject the project or apply some methods which are hard to do. But if you know webpack, then with nextjs you can configure your application with only single config file.  
+
+This is why you should use Nextjs. Nextjs is the most popular framework for React because of its awesome features. And there are more things to explore.
+
+So, if you are using nextjs, why are you using it?  And if you haven't tried it, then which of its feature is more interesting to you? Are you going to try it?
+
+Please put your answers on the comment box. I would love to hear from you. Also if you like this blog then give it a 💖 reaction. If you have any question, then you can connect to me on any social media as @thatanjan.  
+
+And also I will create a video about it. So SUBSCRIBE to my youtube channel [Cules Coding](https://www.youtube.com/channel/UCBaGowNYTUsm3IDaHbLRMYw?sub_confirmation=1)
+Until then, stay safe and be happy 🙂
+
+### About me:
+
+#### Who am I?
+
+My name is Anjan. I am a full stack web developer from Dhaka, Bangladesh.
+
+#### What problems do I solve?
+
+I can create complex full stack web applications like social media application, blogging, e-commerce website and many more.
+
+#### Why do I do what I do?
+
+I love to solve problems and develop new ideas. I also enjoy sharing my knowledge to other people who are wiling to learn. That's why I write blog posts and run a youtube channel called [Cules Coding](https://www.youtube.com/channel/UCBaGowNYTUsm3IDaHbLRMYw?sub_confirmation=1)
+
+#### Think we should work together?
+
+##### Feel free to contact me
+
+Email: anjancules@gmail.com
+
+linkedin: [@thatanjan](https://linkedin.com/in/thatanjan/)
+
+portofolio: [anjan](https://anjan.vercel.app/)
+
+Github: [@thatanjan](https://github.com/thatAnjan/)
+
+Instagram (personal): [@thatanjan](https://instagram.com/thatAnjan/)
+
+Instagram (youtube channel): [@thatanjan](https://instagram.com/cules_coding/)
+
+twitter: [@thatanjan](https://twitter.com/thatAnjan)
+
+#### About My channel:
+
+#### Why would you subscribe to [Cules Coding](https://www.youtube.com/channel/UCBaGowNYTUsm3IDaHbLRMYw?sub_confirmation=1)?
+
+[ Cules Coding ](https://www.youtube.com/channel/UCBaGowNYTUsm3IDaHbLRMYw?sub_confirmation=1) will teach you full stack development. I will teach you not only the basic concepts but also the advanced concepts that other youtube channels don't cover. I will also teach you Data Structures and Algorithms with abstraction and without Math. You will also find many tutorials about developer tools and technologies. I also explain advanced concepts and technologies with simplicity.
+
+#### So what are you waiting for?
+
+Subscribe to [Cules Coding](https://www.youtube.com/channel/UCBaGowNYTUsm3IDaHbLRMYw?sub_confirmation=1)
+so that my friend you don't miss any of these cool stuffs.
+
