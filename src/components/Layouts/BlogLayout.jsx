@@ -14,14 +14,21 @@ const useStyles = makeStyles({
 	},
 })
 
-const BlogLayout = () => {
+const BlogLayout = ({
+	banner,
+	title,
+	createdAt,
+	description,
+	totalViews,
+	readingTime,
+}) => {
 	const { bannerStyle, paddingBottom } = useStyles()
 	return (
 		<Grid container justify='center'>
 			<Grid item xs={8}>
 				<div className={bannerStyle}>
 					<Image
-						src='/sample.jpg'
+						src={banner}
 						layout='responsive'
 						height={1080}
 						width={1920}
@@ -34,17 +41,17 @@ const BlogLayout = () => {
 					align='center'
 					className={paddingBottom}
 				>
-					Setup Eslint, Prettier with TypeScript and React
+					{title}
 				</Typography>
 				<Grid container className={paddingBottom} justify='space-evenly'>
 					<Grid item>
-						<Typography variant='h6'>Creation Date</Typography>
+						<Typography variant='h6'>{createdAt}</Typography>
 					</Grid>
 					<Grid item>
-						<Typography variant='h6'>X min Read</Typography>
+						<Typography variant='h6'>{readingTime}</Typography>
 					</Grid>
 					<Grid item>
-						<Typography variant='h6'>X views</Typography>
+						<Typography variant='h6'>{totalViews}</Typography>
 					</Grid>
 				</Grid>
 				Ipsum quo molestiae consequuntur laboriosam minima odio Fugiat quasi
