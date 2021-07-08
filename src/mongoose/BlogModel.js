@@ -6,7 +6,7 @@ const requiredStringType = {
 }
 
 const schema = new Schema({
-	title: requiredStringType,
+	title: { ...requiredStringType, text: true },
 	slug: requiredStringType,
 	description: requiredStringType,
 	banner: requiredStringType,
