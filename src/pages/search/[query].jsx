@@ -10,7 +10,7 @@ const Query = () => {
 				You have X search results based on the Query
 			</Typography>
 
-			<BlogPreviewLayout />
+			<BlogPreviewLayout allBlogs={[]} />
 		</>
 	)
 }
