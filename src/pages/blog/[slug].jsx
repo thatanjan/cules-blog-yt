@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import axios from 'axios'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
 
@@ -8,10 +9,26 @@ import BlogModel from '../../mongoose/BlogModel'
 import BlogLayout from '../../components/Layouts/BlogLayout'
 import MDXComponents from '../../components/MDX/MDXComponents'
 
+import useApiSwr from '../../hooks/useApiSWR'
+
 const Blog = ({ blog, slug, serializedBlog }) => {
+	const { data, mutate } = useApiSwr(`/api/views/${slug}`)
+
+	useEffect(() => {
+		;(async () => {
+			try {
+				await axios.post(`/api/views/${slug}`)
+
+				mutate()
+			} catch (e) {}
+		})()
+	}, [])
+
 	return (
 		<>
-			<BlogLayout {...blog}>
+			<BlogLayout
+				{...{ ...blog, totalViews: data ? data.totalViews : blog.totalViews }}
+			>
 				<MDXRemote {...serializedBlog} components={MDXComponents} />
 			</BlogLayout>
 		</>
