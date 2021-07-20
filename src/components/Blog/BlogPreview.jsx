@@ -7,22 +7,39 @@ import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 
 import MuiLink from '../Links/MuiLink'
+import useApiSwr from '../../hooks/useApiSWR'
 
-const BlogPreview = () => {
+const BlogPreview = ({
+	title,
+	createdAt,
+	description,
+	slug,
+	totalViews,
+	banner,
+	readingTime,
+}) => {
+	const href = `/blog/${slug}`
+
+	const { data } = useApiSwr(`/api/views/${slug}`)
+
 	return (
 		<Card>
 			<CardHeader
 				title={
-					<MuiLink MuiComponent={Typography} href='/dfedfe' variant='h6'>
-						why I love reactjs
+					<MuiLink MuiComponent={Typography} href={href} variant='h6'>
+						{title}
 					</MuiLink>
 				}
-				subheader={<>adfjiwsjrfsjfls</>}
+				subheader={
+					<>
+						{createdAt}, {data ? data.totalViews : totalViews} views, {readingTime}
+					</>
+				}
 			/>
 
-			<MuiLink MuiComponent={CardMedia} href='/'>
+			<MuiLink MuiComponent={CardMedia} href={href}>
 				<Image
-					src='/sample.jpg'
+					src={banner}
 					height={1080}
 					width={1920}
 					layout='responsive'
@@ -30,14 +47,7 @@ const BlogPreview = () => {
 				/>
 			</MuiLink>
 
-			<CardContent>
-				Ipsum ipsa amet voluptates facere blanditiis Asperiores cumque recusandae
-				dignissimos laboriosam reiciendis Voluptas corrupti officiis quidem tempore
-				suscipit, excepturi Et aspernatur sint nemo nesciunt incidunt Voluptatum
-				excepturi culpa quaerat aliquid ullam. Eaque repudiandae officiis nobis quis
-				ut. Deleniti corrupti sit incidunt consequuntur suscipit. Natus illo natus
-				similique quam dolores fugit.
-			</CardContent>
+			<CardContent>{description}</CardContent>
 		</Card>
 	)
 }

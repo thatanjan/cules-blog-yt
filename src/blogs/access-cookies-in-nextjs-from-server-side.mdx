@@ -1,0 +1,89 @@
+---
+title: Access cookies in NextJS from server side
+description: Accessing cookies in nextjs from server side can be tricky. In this blog you will learn how to do that
+altText: Accessing cookies in nextjs from server side can be tricky. In this blog you will learn how to do that
+banner: /blogs/access-cookies-in-nextjs-from-server-side/banner.png
+customID: 60b5a98b7c422d1652cc1307
+---
+
+If you want to set some authentication system like jwt, then you have to store your token inside client(browser). You store them either in localStorage or as a cookie. But when you perform any kind of server side operation, then you don't have access to the client. So you don't have access the cookies from server side. Then what is the solution?
+
+### The solution.
+```typescript
+import { GetServerSideProps } from 'next'
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+	const { req, res } = ctx
+
+  	const {cookies} = req
+	
+	return { props: {  } }
+}
+```
+
+I have created a YouTube video about this. You can check that out. If you like this video, please like and subscribe to my channel.
+[![](http://img.youtube.com/vi/RECwLOZdiR4/0.jpg)](http://www.youtube.com/watch?v=RECwLOZdiR4 " Nextjs Cookies from server side")
+
+
+You can access the cookies from request object inside `getServerSideProps` data fetching method. You can learn about data fetching methods of nextjs from here
+
+`getServerSideProps` method takes context as a parameter. Context is a giant object. Request and Response object is inside the context object.
+
+```typescript
+const { req, res } = ctx
+```
+
+In the `request` object you'll find a `cookies` object.
+
+```typescript
+const { cookies } = req
+```
+
+All your cookies will be inside `cookies` object.
+
+So that's it. If you have any question, put them on the comment section. And also you can connect to me on any social media as @thatanjan.  
+
+
+### About me:
+
+#### Who am I?
+
+My name is Anjan. I am a full stack web developer from Dhaka, Bangladesh.
+
+#### What problems do I solve?
+
+I can create complex full stack web applications like social media application, blogging, e-commerce website and many more.
+
+#### Why do I do what I do?
+
+I love to solve problems and develop new ideas. I also enjoy sharing my knowledge to other people who are wiling to learn. That's why I write blog posts and run a youtube channel called [Cules Coding](https://www.youtube.com/channel/UCBaGowNYTUsm3IDaHbLRMYw?sub_confirmation=1)
+
+#### Think we should work together?
+
+##### Feel free to contact me
+
+Email: anjancules@gmail.com
+
+linkedin: [@thatanjan](https://linkedin.com/in/thatanjan/)
+
+portofolio: [anjan](https://anjan.vercel.app/)
+
+Github: [@thatanjan](https://github.com/thatAnjan/)
+
+Instagram (personal): [@thatanjan](https://instagram.com/thatAnjan/)
+
+Instagram (youtube channel): [@thatanjan](https://instagram.com/cules_coding/)
+
+twitter: [@thatanjan](https://twitter.com/thatAnjan)
+
+#### About My channel:
+
+#### Why would you subscribe to [Cules Coding](https://www.youtube.com/channel/UCBaGowNYTUsm3IDaHbLRMYw?sub_confirmation=1)?
+
+[ Cules Coding ](https://www.youtube.com/channel/UCBaGowNYTUsm3IDaHbLRMYw?sub_confirmation=1) will teach you full stack development. I will teach you not only the basic concepts but also the advanced concepts that other youtube channels don't cover. I will also teach you Data Structures and Algorithms with abstraction and without Math. You will also find many tutorials about developer tools and technologies. I also explain advanced concepts and technologies with simplicity.
+
+#### So what are you waiting for?
+
+Subscribe to [Cules Coding](https://www.youtube.com/channel/UCBaGowNYTUsm3IDaHbLRMYw?sub_confirmation=1)
+so that my friend you don't miss any of these cool stuffs.
+

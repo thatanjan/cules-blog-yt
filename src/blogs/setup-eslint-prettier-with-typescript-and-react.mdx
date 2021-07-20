@@ -1,0 +1,306 @@
+---
+title: Setup Eslint, Prettier with TypeScript and React
+description: Eslint is a linter which enforces developer to write good and consistent code all over Project. Prettier is a good formatter tool that automatically formats the source code.
+banner: /blogs/setup-eslint-prettier-with-typescript-and-react/banner.png
+altText: Eslint is a linter which enforces developer to write good and consistent code all over Project. Prettier is a good formatter tool that automatically formats the source code.
+customID: 60b5a9986591ce3613a599f5
+---
+
+
+In this blog I will teach you, how to setup eslint, prettier with TypeScript and React. Even if you are not using TypeScript or react you can still follow along.
+
+I have already created a video about it on my youtube channel. Check that out for more details.
+<Iframe title='Setup Eslint, Prettier with TypeScript and React' videoID="T-n0mrssDiw"  /> 
+If yout like this video, Please like share and Subscribe to my channel.
+
+For react, I will use Nextjs. Again the principles are the same. You can also use it with create-react-app.
+
+## Editor setup
+You need to install eslint and prettier plugins for your editor. To learn more, visit these links.
+[ Eslint ](https://eslint.org/docs/user-guide/integrations#editors)
+[Prettier](https://prettier.io/docs/en/editors.html)
+
+
+## Setup
+```bash
+yarn create-next-app
+```
+
+Then put your app name. I am going to call it `eslint-prettier-typescript-react`
+
+After that it will set everything for you.
+
+Now change directory to the folder.
+
+```bash
+cd eslint-prettier-typescript-react
+```
+
+### TypeScript setup for Nextjs (optional)
+
+Create a `tsconfig.json` file.
+
+```bash
+touch tsconfig.json
+```
+
+Install typescript packages.
+
+```bash
+yarn add --dev typescript @types/react
+```
+
+Then start the server.
+
+```bash
+yarn dev
+```
+
+It will fill up the `tsconfig.json` file. Now convert all the javascript files to typescript files.
+
+### Setup Absolute import
+Absolute Import vs Relative Import
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/400gedk393xdn0h631ql.png)
+
+Inside `tsconfig.json` file. create a new property `baseUrl` and set the import point. I will create a `src` folder and put all source code inside that.
+
+So add this extra code: 
+```json
+{
+	"baseUrl": "src/"
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/"],
+}
+```
+
+### Setup eslint
+- Install eslint globally on your computer.
+```bash
+	yarn global add eslint
+```
+
+- Inside your project initialize eslint.
+```bash
+	eslint --init
+```
+- Choose 3.
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/5a5qy6a4goz8yjtwgbm8.png)
+
+- Choose 1
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/fcm9x4buujeufr1skj33.png)
+
+- Choose your framework if you are using. In my case `react`
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/aw6b38hxdgjgrqp1d0jt.png)
+
+- If you are using TypeScript then `yes`. I am using TypeScript.
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/e4eutfvqk6vweeu4phcg.png)
+
+- Browser in my case.
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/iql056fynfoz6390k4m7.png)
+
+- Use a popular style guide.
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nkrsxzg3l71ah8p1vea9.png)
+
+- I would liket to use Airbnb style guide. You can choose any style guide. But Airbnb is good and I recommend it.
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jk8bfygud485tck9hh3c.png)
+
+- I will use json for my config file.
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ntnjtfvmpvnwbbyffp64.png)
+
+- It will ask you to install some packages to Install with `npm`. If you want
+    to use `npm` then go ahead. But I will use yarn. 
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/q8u06509o0ztw7h3mlag.png)
+
+So For those of who are using yarn like me, You can copy and paste package names and install them.
+
+##### With typescript: 
+
+```bash
+yarn add --dev eslint-plugin-react @typescript-eslint/eslint-plugin@latest eslint-config-airbnb@latest eslint eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react-hooks  @typescript-eslint/parser@latest
+```
+
+##### Without typescript: 
+
+```bash
+yarn add --dev eslint-plugin-react  eslint-config-airbnb@latest eslint eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react-hooks  
+```
+It will create a eslint config file `.eslintrc`. It will be a hidden file.
+
+
+### Prettier Setup
+
+- Let's install prettier.
+```bash
+yarn add --dev eslint-config-prettier prettier
+```
+
+- Create a prettier config file.
+```bash 
+touch .prettierrc.json
+```
+
+Now you can put your config in `.prettierrc.json` file in json format. You can find the options from [here](https://prettier.io/docs/en/configuration.html)
+
+My basic config for prettier.
+```json
+	{
+		"singleQuote": true,
+		"useTabs": true,
+		"tabWidth": 1,
+		"semi": false,
+		"jsxSingleQuote": true,
+		"arrowParens": "avoid"
+	}
+```
+
+Now we are done with prettier. Let's setup eslint config.
+
+### ESlint config setup
+
+Your `.eslintrc` file should look like this.
+```json
+	{
+	    "env": {
+		   "browser": true,
+		   "es2021": true
+	    },
+	    "extends": [
+		   "plugin:react/recommended",
+		   "airbnb"
+	    ],
+	    "parser": "@typescript-eslint/parser",
+	    "parserOptions": {
+		   "ecmaFeatures": {
+			  "jsx": true
+		   },
+		   "ecmaVersion": 12,
+		   "sourceType": "module"
+	    },
+	    "plugins": [
+		   "react",
+		   "@typescript-eslint"
+	    ],
+	    "rules": {
+	    }
+	}
+```
+
+We need to extend the eslint config with prettier. So add `prettier` to `extends` array.
+```json
+	{
+		"extends": [
+		   "plugin:react/recommended",
+		   "airbnb",
+		   "prettier" 
+	    ],
+	}
+```
+
+###### Let's fix some eslint errors
+
+To turn any rule `off` or `on`, add the rules to the rules array. You can find the docs from [here](https://eslint.org/docs/user-guide/configuring/rules). Please watch my video to understand it well.
+
+- allow jsx on other extensions.
+
+```json
+	{
+		"rules": {
+			"react/jsx-filename-extension": [
+					1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+			]
+		}
+	}
+```
+
+
+- File extension on import statement.
+
+```json
+{
+	"rules": {
+			"import/extensions": [
+				"error",
+				"always",
+				{
+					"js": "never",
+					"jsx": "never",
+					"ts": "never",
+					"tsx": "never"
+				}
+			],
+		}
+}
+```
+
+- Import unresolved error for absolute import(if you are using).
+```json 
+	{
+		"settings": {
+			"import/resolver": {
+				"node": {
+					"extensions": [".js", ".jsx", ".ts", ".tsx"],
+					"moduleDirectory": ["node_modules", "src/"]
+				}
+			}
+		}
+	}
+```
+
+You can find my Eslint config from [here](https://gist.github.com/thatanjan/c3c2622e0360ecacb7aba9c7418023a1)
+
+So, that's it for today. I hope I have covered everything that you need to know about how to setup.
+
+If you want to reach out to me, You can follow me on any social media as @thatanjan. Until then stay safe and good bye.
+
+### About me:
+
+#### Who am I?
+
+My name is Anjan. I am a full stack web developer from Dhaka, Bangladesh.
+
+#### What problems do I solve?
+
+I can create complex full stack web applications like social media application, blogging, e-commerce website and many more.
+
+#### Why do I do what I do?
+
+I love to solve problems and develop new ideas. I also enjoy sharing my knowledge to other people who are wiling to learn. That's why I write blog posts and run a youtube channel called [Cules Coding](https://www.youtube.com/channel/UCBaGowNYTUsm3IDaHbLRMYw?sub_confirmation=1)
+
+#### Think we should work together?
+
+##### Feel free to contact me
+
+Email: anjancules@gmail.com
+
+linkedin: [@thatanjan](https://linkedin.com/in/thatanjan/)
+
+portofolio: [anjan](https://anjan.vercel.app/)
+
+Github: [@thatanjan](https://github.com/thatAnjan/)
+
+Instagram (personal): [@thatanjan](https://instagram.com/thatAnjan/)
+
+Instagram (youtube channel): [@thatanjan](https://instagram.com/cules_coding/)
+
+twitter: [@thatanjan](https://twitter.com/thatAnjan)
+
+#### About My channel:
+
+#### Why would you subscribe to [Cules Coding](https://www.youtube.com/channel/UCBaGowNYTUsm3IDaHbLRMYw?sub_confirmation=1)?
+
+[ Cules Coding ](https://www.youtube.com/channel/UCBaGowNYTUsm3IDaHbLRMYw?sub_confirmation=1) will teach you full stack development. I will teach you not only the basic concepts but also the advanced concepts that other youtube channels don't cover. I will also teach you Data Structures and Algorithms with abstraction and without Math. You will also find many tutorials about developer tools and technologies. I also explain advanced concepts and technologies with simplicity.
+
+#### So what are you waiting for?
+
+Subscribe to [Cules Coding](https://www.youtube.com/channel/UCBaGowNYTUsm3IDaHbLRMYw?sub_confirmation=1) so that my friend you don't miss any of these cool stuffs.
+
+
