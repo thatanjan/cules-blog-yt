@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 
 import MuiLink from '../Links/MuiLink'
+import useApiSwr from '../../hooks/useApiSWR'
 
 const BlogPreview = ({
 	title,
@@ -18,6 +19,9 @@ const BlogPreview = ({
 	readingTime,
 }) => {
 	const href = `/blog/${slug}`
+
+	const { data } = useApiSwr(`/api/views/${slug}`)
+
 	return (
 		<Card>
 			<CardHeader
@@ -28,7 +32,7 @@ const BlogPreview = ({
 				}
 				subheader={
 					<>
-						{createdAt}, {totalViews}, {readingTime}
+						{createdAt}, {data ? data.totalViews : totalViews} views, {readingTime}
 					</>
 				}
 			/>
